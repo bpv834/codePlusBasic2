@@ -33,6 +33,7 @@ fun dfs(x: Int, sum: Int) {
             dfs(i + date, sum + sc)
         }
     }
+    // 일짜가 n+1 이상이라면 가능한 전부 탐색한 것
     ans= Math.max(ans,sum)
 
 }
