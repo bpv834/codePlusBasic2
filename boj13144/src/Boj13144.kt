@@ -9,7 +9,7 @@ fun main() {
     val set = mutableSetOf<Int>()
     var ans = 0L
     var rt = 0
-
+// 어렵
     for (lt in 0 until n) {
         while (rt < n && !set.contains(arr[rt])) {
             set.add(arr[rt])
