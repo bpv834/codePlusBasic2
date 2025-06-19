@@ -13,6 +13,7 @@ fun main() {
     var rt=0
     var ans = Int.MAX_VALUE
 
+    // lt가 rt를 넘어서는순간이 존재함 m==0인경우..
     while (rt<n&& lt<=rt){
         val a =list[lt]
         val b =list[rt]
