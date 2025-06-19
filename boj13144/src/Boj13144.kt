@@ -4,6 +4,30 @@ import java.util.*
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
     val n = br.readLine().toInt()
+    val list = br.readLine().split(" ").map { it.toInt() }
+    var rt = 0
+    val set = mutableSetOf<Int>()
+    var ans = 0L
+
+
+
+    for(lt in 0 until n){
+        //println("lt= $lt rt= $rt ans = $ans set= $set")
+        while (rt<n&& lt<=rt&& !set.contains(list[rt])){
+            set.add(list[rt++])
+        }
+        // 와 하나도 안겹치고 10만 갔을때 10만-0 + 10-1 ... 10만-9만9천 따라서 50억임 그래서 long타입으로 해야함
+        ans+= rt-lt
+        set.remove(list[lt])
+    }
+    println(ans)
+}
+
+
+/*
+fun main() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val n = br.readLine().toInt()
     val arr = br.readLine().split(" ").map { it.toInt() }
 
     val set = mutableSetOf<Int>()
@@ -21,4 +45,4 @@ fun main() {
     }
 
     println(ans)
-}
+}*/
