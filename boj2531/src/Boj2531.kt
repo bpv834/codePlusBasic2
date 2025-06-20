@@ -1,6 +1,50 @@
 import java.io.*
 import java.util.*
 
+
+fun main() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val (n, d, k, c) = br.readLine().split(" ").map { it.toInt() }
+    val arr = IntArray(n)
+    val typeMemo = IntArray(d + 1)
+    for (i in 0 until n) {
+        arr[i] = br.readLine().trim().toInt()
+    }
+
+    var ans = 0
+    var curTypeCnt = 0
+    for (i in 0 until k) {
+        val type = arr[i]
+        // 넣기전 값이 0일때만 새로넣는것이기때문에 type수 증가
+        if (typeMemo[type] == 0) curTypeCnt++
+
+        typeMemo[type] = typeMemo[type] + 1
+    }
+
+    if (typeMemo[c] == 0) ans = curTypeCnt + 1 else ans = curTypeCnt
+
+
+    for (i in k until n + k - 1) {
+        val lt = i - k
+        val addType = arr[i%(n)]
+        println("i= $i lt= $lt addType = $addType")
+
+        if (typeMemo[addType] == 0) curTypeCnt++
+        typeMemo[addType] = typeMemo[addType] + 1
+
+        typeMemo[arr[lt]] = typeMemo[arr[lt]] - 1
+        if (typeMemo[arr[lt]] == 0) curTypeCnt--
+
+        if (typeMemo[c] == 0) ans = Math.max(ans, curTypeCnt + 1) else ans = Math.max(ans,curTypeCnt)
+
+    }
+
+    println(ans)
+}
+
+
+/*
+
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
     val (n, d, k, c) = br.readLine().split(" ").map { it.toInt() }
@@ -51,4 +95,4 @@ fun main() {
     println(max)
 
 
-}
+}*/
